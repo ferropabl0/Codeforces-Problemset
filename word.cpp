@@ -5,22 +5,36 @@ using namespace std;
 int main()
 {
     // freopen("input.txt", "r", stdin);
-    int money, bananas, price, cur_price, cur_money, borrow = 0;
-    cin >> price >> money >> bananas;
-    cur_money = money;
-    for (int i = 1; i <= bananas; i++)
+    int low = 0, up = 0;
+    string word;
+    cin >> word;
+
+    for (int i = 0; i < word.length(); i++)
     {
-        cur_price = i * price;
-        if (cur_money < cur_price)
+        if (word[i] == tolower(word[i]))
         {
-            borrow += cur_price - cur_money;
-            cur_money = 0;
+            low++;
         }
         else
         {
-            cur_money -= cur_price;
+            up++;
         }
     }
-    cout << borrow;
+
+    if (low < up)
+    {
+        for (int i = 0; i < word.length(); i++)
+        {
+            word[i] = toupper(word[i]);
+        }
+    }
+    else
+    {
+        for (int i = 0; i < word.length(); i++)
+        {
+            word[i] = tolower(word[i]);
+        }
+    }
+    cout << word;
     return 0;
 }
